@@ -1,18 +1,23 @@
 var questions = [
-    {
-    questionText:"Question 1: Which type of HTML tag to we use to connect a JavaScript file to our HTML?",
+    {questionText:"Question 1: Which type of HTML tag to we use to connect a JavaScript file to our HTML?",
     options: ["header", "div", "script", "link"], 
     correctAnswer: "script"
     },
-    {
-    questionText:"Question 2: Which type of loop runs code until a set condition changes?", 
+    
+    {questionText:"Question 2: Which type of loop runs code until a set condition changes?", 
     options: ["while loop", "interval function", "for loop", "query selector"], 
     correctAnswer = "while loop"
     },
-    {question = {text: "Question 3: Which of the following is the correct way to create a function in JavaScript?", option1 = "function functionName{}", option2 = "function functionName()", option3 = "function = functionName()", option4 = "function:function name", correctAnswer = ""}
-    {question = {text: "Question 4: Which of the following is the correct way to start a \"for loop\"?", 
-    options = ("for i + 0; i > 5; i++", "for {i + 0; i > 5; i++}", "for (i + 0; i > 5; i++)", "for ()",) 
-    correctAnswer = ""}
+
+    {questiontext:"Question 3: Which of the following is the correct way to create a function in JavaScript?", 
+    options: ["function functionName{}", "function functionName()", "function = functionName()", "function:function name"],
+    correctAnswer = "function = functionName()"
+    },
+
+    {questionText:"Question 4: Which of the following is the correct way to start a \"for loop\"?", 
+    options: ["for i + 0; i > 5; i++", "for {i + 0; i > 5; i++}", "for (i + 0; i > 5; i++)", "for ()"],
+    correctAnswer = "for (i + 0; i > 5; i++)"
+    }
 ]
 
 // Global variables:
