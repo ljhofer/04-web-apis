@@ -20,8 +20,6 @@ var questions = [
     }
 ]
 
-var currentQuestionIndex = 0
-
 // Global variables:
 var numberCorrect = 0; 
 var answerFirstQuestion = ""
@@ -46,7 +44,7 @@ var optionThree = document.getElementById("li3");
 var optionFour = document.getElementById("li4");
 
 
-var timeLeft
+var timeLeft=10
 
 
 // starting page with click button to start
@@ -55,12 +53,30 @@ var timeLeft
         //welcome statement
         //quiz description
         //start buttom
-// function start () {
+function start() {
+
+    startButton.addEventListener("click", function() {
+        countdown();
+        firstQuestion();
 
 
+    });
+}
 
-// }
+function countdown() {
+    var timerInterval = setInterval( function(){
+        timeLeft--;
+        countdownClock.textContent = timeLeft;
 
+        if(timeLeft === 0) {
+            clearInterval(timerInterval);
+            console.log("Your time is up!");
+        }
+    }, 1000);
+}
+
+
+start();
     
 // load firstQuestion(); on click of button
 function firstQuestion() {
@@ -75,20 +91,29 @@ function firstQuestion() {
     optionThree.textContent = currentQuestion.options[2];
     optionFour.textContent = currentQuestion.options[3];
     
+
+    // Add listener event for click on answers:
+    var userAnswer = addEventListener
+    //Change answer for each question:
+    
+    if (userAnswer === currentQuestion.correctAnswer) {
+        numberCorrect++;
+        console.log("good job!");  
+        // correctAnswer +1
+    } else if (userAnswer != currentQuestion.correctAnswer) {
+        timeLeft -10;
+        console.log("You'll get it next time!");
+    }
+
+    // secondQuestion();
         
-    //This way works:
-    // questionText.textContent = "Question 1: Which type of HTML tag to we use to connect a JavaScript file to our HTML?";
-    // optionOne.textContent = "header";
-    // optionTwo.textContent = "div"; 
-    // optionThree.textContent = "script";
-    // optionFour.textContent = "link";
+    
        
 } 
 
-firstQuestion();
+// firstQuestion();
 
 function secondQuestion() {
-
     var currentQuestion = questions[1];
     questionText.textContent = currentQuestion.questionText;
     optionOne.textContent = currentQuestion.options[0];
@@ -96,29 +121,19 @@ function secondQuestion() {
     optionThree.textContent = currentQuestion.options[2];
     optionFour.textContent = currentQuestion.options[3];
 
+
+    
 }
 
-secondQuestion();
+// secondQuestion();
 
 
 
- // Make UL visible again:
-    // optionList.style.visibility = "visible";
+ 
 
     
 
 
-    //Need to link this to user selection on click:
-    //Change answer for each question:
-    // if (correctAnswer === answer1) {
-    //     numberCorrect++;
-    //     console.log("good job!");  
-    //     // correctAnswer +1
-    // } else if (correctAnswer != answer1) {
-    //     timeLeft -10;
-    //     console.log("You'll get it next time!");
-    // }
-
-    // secondQuestion();
+    
 
     
