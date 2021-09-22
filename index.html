@@ -8,14 +8,18 @@
     <link rel="stylesheet" href=./assets/style.css> 
 </head>
 <body>
-    <h1>Welcome to the JavaScript Beginner Quiz.</h1>
-    <p>You will be given 1 minute to answer as many questions as you can. If you get a question wrong, the timer will deduct 10 seconds from your remaining time. Press START below to begin.</p>
-    
-    <h2 id="question-text"></h2>
-    <ul id=possible-answers>
+    <h1 id="welcomeBanner">Welcome to the JavaScript Beginner Quiz.</h1>
+    <p id="instructions">You will be given 1 minute to answer as many questions as you can. If you get a question wrong, the timer will deduct 10 seconds from your remaining time. Press START below to begin.</p>
+    <button type="startButton">Start quiz</button>  
+    <h2 id="countdownClock"></h2>
 
+    <h3 id="question-text"></h3>
+    <ul id="possible-answers">
+        <li id="li1">Placeholder</li>
+        <li id="li2">Placeholder</li>
+        <li id="li3">Placeholder</li>
+        <li id="li4">Placeholder</li>
     </ul>
-    <h3 id=timer></h3>
 
     <!-- <div id="question-1">
         <h2> Question 1: Which type of HTML tag to we use to connect a JavaScript file to our HTML?</h2>
@@ -60,6 +64,6 @@
         </ul>
     </div> -->
 
-    <script> src="./script.js" </script>
+    <script src="./script.js"> </script>
 </body>
 </html>
