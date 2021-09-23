@@ -15,7 +15,7 @@ var questions = [
     },
 
     {questionText:"Question 4: Which of the following is the correct way to start a \"for loop\"?", 
-    options: ["for i + 0; i > 5; i++", "for {i + 0; i > 5; i++}", "for (i + 0; i > 5; i++)", "for ()"],
+    options: ["for i + 0; i > 5; i++", "for {i + 0; i > 5; i++}", "for ()", "for (i + 0; i > 5; i++)"],
     correctAnswer: "for (i + 0; i > 5; i++)"
     }
 ]
@@ -43,24 +43,20 @@ var optionTwo = document.getElementById("li2");
 var optionThree = document.getElementById("li3");
 var optionFour = document.getElementById("li4");
 
+var currentQuestionIndex = 0;
+var timeLeft=10; 
 
-var timeLeft=10
 
-
-// starting page with click button to start
-    //will need:
-        //countdown in corner
-        //welcome statement
-        //quiz description
-        //start buttom
 function start() {
 
     startButton.addEventListener("click", function() {
         countdown();
-        firstQuestion();
+        quizQuestions();
 
     });
 }
+
+start();
 
 function countdown() {
     var timerInterval = setInterval( function(){
@@ -74,11 +70,8 @@ function countdown() {
     }, 1000);
 }
 
-
-start();
-    
-// load firstQuestion(); on click of button
-function firstQuestion() {
+// load quiz questions on click of button
+function quizQuestions() {
     //Clear original text
     welcomePage.style.display = "none";
 
@@ -90,62 +83,113 @@ function firstQuestion() {
     optionThree.textContent = currentQuestion.options[2];
     optionFour.textContent = currentQuestion.options[3];
     
-
-    // Add listener event for click on answers:
-    // var userAnswer = addEventListener
-    //Change answer for each question:
-    
-   optionList.addEventListener("click", function(event){
+    //Event listener for click on answers:
+    optionList.addEventListener("click", function(event){
         var userAnswer = event.target;  
-        console.log(userAnswer);
-        if (userAnswer === optionThree) {
+        var currentQuestion = questions[currentQuestionIndex];
+        if (userAnswer.textContent === currentQuestion.correctAnswer) {
         numberCorrect++;
-        console.log("good job!");  
-        
-        } else if (userAnswer != optionThree) {
+        } 
+        else {
         timeLeft -10;
-        console.log("You'll get it next time!");
         }
-        console.log(numberCorrect)
+        currentQuestionIndex++;
 
-
-   })
-   
-    // if (userAnswer === currentQuestion.correctAnswer) {
-    //     numberCorrect++;
-    //     console.log("good job!");  
-    //     // correctAnswer +1
-    // } else if (userAnswer != currentQuestion.correctAnswer) {
-    //     timeLeft -10;
-    //     console.log("You'll get it next time!");
-    // }
-
-    // secondQuestion();
+        if (currentQuestionIndex < questions.length){ 
+        currentQuestion = questions[currentQuestionIndex];
+        questionText.textContent = currentQuestion.questionText;
+        optionOne.textContent = currentQuestion.options[0];
+        optionTwo.textContent = currentQuestion.options[1];
+        optionThree.textContent = currentQuestion.options[2];
+        optionFour.textContent = currentQuestion.options[3];
+        }
+        else {
+            endGame();
+        }   
         
-    
-       
+        console.log(numberCorrect);
+   })
+        
 } 
 
-// firstQuestion();
+// function secondQuestion() {
+//     var currentQuestion = questions[1];
+//     questionText.textContent = currentQuestion.questionText;
+//     optionOne.textContent = currentQuestion.options[0];
+//     optionTwo.textContent = currentQuestion.options[1];
+//     optionThree.textContent = currentQuestion.options[2];
+//     optionFour.textContent = currentQuestion.options[3];
 
-function secondQuestion() {
-    var currentQuestion = questions[1];
-    questionText.textContent = currentQuestion.questionText;
-    optionOne.textContent = currentQuestion.options[0];
-    optionTwo.textContent = currentQuestion.options[1];
-    optionThree.textContent = currentQuestion.options[2];
-    optionFour.textContent = currentQuestion.options[3];
+//      //Event listener for click on answers:
+//      optionList.addEventListener("click", function(event){
+//         var userAnswer = event.target;  
+//         if (userAnswer === optionOne) {
+//         numberCorrect++;
+//         thirdQuestion();
+//         } 
+//         else {
+//         timeLeft -10;
+//         thirdQuestion();
+//         }
+//         console.log(numberCorrect);
+//    })
+     
+// }
 
+// function thirdQuestion() {
+//     var currentQuestion = questions[2];
+//     questionText.textContent = currentQuestion.questionText;
+//     optionOne.textContent = currentQuestion.options[0];
+//     optionTwo.textContent = currentQuestion.options[1];
+//     optionThree.textContent = currentQuestion.options[2];
+//     optionFour.textContent = currentQuestion.options[3];
 
-    
-}
-
-// secondQuestion();
-
-
-
+//      //Event listener for click on answers:
+//      optionList.addEventListener("click", function(event){
+//         var userAnswer = event.target;  
+//         if (userAnswer === optionThree) {
+//         numberCorrect++;
+//         fourthQuestion();  
+//         } 
+//         else {
+//         timeLeft -10;
+//         fourthQuestion();
+//         }
+//         console.log(numberCorrect);
+//    })
+        
+// }
  
+// function fourthQuestion() {
+//     var currentQuestion = questions[3];
+//     questionText.textContent = currentQuestion.questionText;
+//     optionOne.textContent = currentQuestion.options[0];
+//     optionTwo.textContent = currentQuestion.options[1];
+//     optionThree.textContent = currentQuestion.options[2];
+//     optionFour.textContent = currentQuestion.options[3];
 
+//      //Event listener for click on answers:
+//      optionList.addEventListener("click", function(event){
+//         var userAnswer = event.target;  
+//         if (userAnswer === optionFour) {
+//         numberCorrect++;
+//         endGame(); 
+//         } 
+//         else {
+//         timeLeft -10;
+//         endGame();
+//         }
+//         console.log(numberCorrect);
+//    })
+      
+// }
+
+function endGame() {
+    console.log("The game has ended.");
+    
+
+
+}
     
 
 
