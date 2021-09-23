@@ -1,5 +1,5 @@
 var questions = [
-    {questionText:"Question 1: Which type of HTML tag to we use to connect a JavaScript file to our HTML?",
+    {questionText:"Question 1: Which type of HTML tag do we use to connect a JavaScript file to our HTML?",
     options: ["header", "div", "script", "link"], 
     correctAnswer: "script"
     },
@@ -59,7 +59,6 @@ function start() {
         countdown();
         firstQuestion();
 
-
     });
 }
 
@@ -93,17 +92,33 @@ function firstQuestion() {
     
 
     // Add listener event for click on answers:
-    var userAnswer = addEventListener
+    // var userAnswer = addEventListener
     //Change answer for each question:
     
-    if (userAnswer === currentQuestion.correctAnswer) {
+   optionList.addEventListener("click", function(event){
+        var userAnswer = event.target;  
+        console.log(userAnswer);
+        if (userAnswer === optionThree) {
         numberCorrect++;
         console.log("good job!");  
-        // correctAnswer +1
-    } else if (userAnswer != currentQuestion.correctAnswer) {
+        
+        } else if (userAnswer != optionThree) {
         timeLeft -10;
         console.log("You'll get it next time!");
-    }
+        }
+        console.log(numberCorrect)
+
+
+   })
+   
+    // if (userAnswer === currentQuestion.correctAnswer) {
+    //     numberCorrect++;
+    //     console.log("good job!");  
+    //     // correctAnswer +1
+    // } else if (userAnswer != currentQuestion.correctAnswer) {
+    //     timeLeft -10;
+    //     console.log("You'll get it next time!");
+    // }
 
     // secondQuestion();
         

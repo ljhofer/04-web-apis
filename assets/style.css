@@ -1,15 +1,45 @@
 body {
-    background-color: rgb(247, 244, 232);
     text-align: center;
 }
 
+#welcomePage {
+    background-color: #94bc8a;
+    margin: auto 350px;
+}
 
+h1 {
+    font-size: xx-large;
+    margin-top: 300px;
+    padding-top: 25px;
+}
 
-/* style out bulletpoints */
+p {
+    font-size: x-large;
+    margin: auto 200px;
+}
+
+button {
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-size: x-large;
+}
+
+h3 {
+    font-size: xx-large;
+    margin-top: 300px;
+}
 
 ul {
     list-style-type: none;
-    /* visibility: hidden; */
+    font-size: xx-large;
+    /* text-align: center; */
+}
+
+li {
+    border: 2px solid black;
+    margin: 10px auto;
+    width: 15%;
+    text-align: center;
 }
 
 /* li.hover */
