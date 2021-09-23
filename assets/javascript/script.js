@@ -1,41 +1,41 @@
 var questions = [
-    {questionText:"Question 1: Which type of HTML tag do we use to connect a JavaScript file to our HTML?",
+    {questionText:"Which type of HTML tag do we use to connect a JavaScript file to our HTML?",
     options: ["header", "div", "script", "link"], 
     correctAnswer: "script"
     },
     
-    {questionText:"Question 2: Which type of loop runs code until a set condition changes?", 
+    {questionText:"Which type of loop runs code until a set condition changes?", 
     options: ["while loop", "interval function", "for loop", "query selector"], 
     correctAnswer: "while loop"
     },
 
-    {questiontext:"Question 3: Which of the following is the correct way to create a function in JavaScript?", 
+    {questionText:"Which of the following is the correct way to create a function in JavaScript?", 
     options: ["function functionName{}", "function functionName()", "function = functionName()", "function:function name"],
     correctAnswer: "function = functionName()"
     },
 
-    {questionText:"Question 4: Which of the following is the correct way to start a \"for loop\"?", 
+    {questionText:"Which of the following is the correct way to start a \"for loop\"?", 
     options: ["for i + 0; i > 5; i++", "for {i + 0; i > 5; i++}", "for ()", "for (i + 0; i > 5; i++)"],
     correctAnswer: "for (i + 0; i > 5; i++)"
     }
-]
+];
 
 // Global variables:
 var numberCorrect = 0; 
-var answerFirstQuestion = ""
-var answerSecondQuestion = ""
-var answerThirdQuestion = ""
-var answerFourthQuestion = ""
+var answerFirstQuestion = "";
+var answerSecondQuestion = "";
+var answerThirdQuestion = "";
+var answerFourthQuestion = "";
 
 //Variables for starting page text, button, and countdown:
-var welcomePage = document.getElementById("welcomePage")
+var welcomePage = document.getElementById("welcomePage");
 var welcomeBanner = document.getElementById("welcomeBanner");
 var instructions = document.getElementById("instructions");
 var startButton = document.getElementById("startButton");
 var countdownClock = document.getElementById("countdownClock");
 
 // Variables for text of questions:
-var questionArea = document.getElementById("questionArea")
+var questionArea = document.getElementById("questionArea");
 var questionText = document.getElementById("question-text");
 var optionList = document.getElementById("possible-answers");
 var optionOne = document.getElementById("li1");
@@ -44,20 +44,18 @@ var optionThree = document.getElementById("li3");
 var optionFour = document.getElementById("li4");
 
 var currentQuestionIndex = 0;
-var timeLeft=10; 
+var timeLeft=60; 
 
-
+//comment
 function start() {
-
-    startButton.addEventListener("click", function() {
-        countdown();
-        quizQuestions();
-
-    });
+    countdown();
+    quizQuestions();    
 }
 
-start();
+//Sets up click event listener for the start button
+startButton.addEventListener("click", start);
 
+//comment
 function countdown() {
     var timerInterval = setInterval( function(){
         timeLeft--;
@@ -72,8 +70,9 @@ function countdown() {
 
 // load quiz questions on click of button
 function quizQuestions() {
-    //Clear original text
+    //Clear original text  //Unhide questionArea div
     welcomePage.style.display = "none";
+    questionArea.style.display = "block";
 
     // Loads question text:  
     var currentQuestion = questions[0];
@@ -87,30 +86,37 @@ function quizQuestions() {
     optionList.addEventListener("click", function(event){
         var userAnswer = event.target;  
         var currentQuestion = questions[currentQuestionIndex];
-        if (userAnswer.textContent === currentQuestion.correctAnswer) {
-        numberCorrect++;
-        } 
-        else {
-        timeLeft -10;
-        }
         currentQuestionIndex++;
 
-        if (currentQuestionIndex < questions.length){ 
-        currentQuestion = questions[currentQuestionIndex];
-        questionText.textContent = currentQuestion.questionText;
-        optionOne.textContent = currentQuestion.options[0];
-        optionTwo.textContent = currentQuestion.options[1];
-        optionThree.textContent = currentQuestion.options[2];
-        optionFour.textContent = currentQuestion.options[3];
+        //comment
+        if (userAnswer.textContent === currentQuestion.correctAnswer) {
+            numberCorrect++;
+        } else {
+            timeLeft = timeLeft -10;
         }
-        else {
+        
+        // comment
+        if (currentQuestionIndex < questions.length){ 
+            currentQuestion = questions[currentQuestionIndex];
+            questionText.textContent = currentQuestion.questionText;
+            optionOne.textContent = currentQuestion.options[0];
+            optionTwo.textContent = currentQuestion.options[1];
+            optionThree.textContent = currentQuestion.options[2];
+            optionFour.textContent = currentQuestion.options[3];
+        } else {
             endGame();
         }   
         
         console.log(numberCorrect);
-   })
-        
+   })       
 } 
+
+function endGame() {
+    console.log("The game has ended.");
+    
+
+
+}
 
 // function secondQuestion() {
 //     var currentQuestion = questions[1];
@@ -184,12 +190,7 @@ function quizQuestions() {
       
 // }
 
-function endGame() {
-    console.log("The game has ended.");
-    
 
-
-}
     
 
 
