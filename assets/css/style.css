@@ -3,7 +3,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Comment each section */
+/* Styling for welcome page */
 #welcomePage {
     background-color: #94bc8a;
     margin: auto 200px;
@@ -27,11 +27,16 @@ button {
     font-size: x-large;
 }
 
+/* Styling for countdown clock */
 h2 {
-   font-size: 90px; 
+   display: none;
+   font-size: lx-large; 
+   text-align: right;
+   color:red;
 
 }
 
+/* Styling for quiz questions pages */
 #questionArea {
     display: none;
 }
@@ -57,3 +62,9 @@ li {
 }
 
 /* li.hover */
+
+/* Styling for end of game page */
+#endPage {
+    display: none;
+}
+

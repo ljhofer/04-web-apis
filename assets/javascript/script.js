@@ -20,21 +20,14 @@ var questions = [
     }
 ];
 
-// Global variables:
-var numberCorrect = 0; 
-var answerFirstQuestion = "";
-var answerSecondQuestion = "";
-var answerThirdQuestion = "";
-var answerFourthQuestion = "";
-
-//Variables for starting page text, button, and countdown:
+//Variables for starting page text, button, and countdown
 var welcomePage = document.getElementById("welcomePage");
 var welcomeBanner = document.getElementById("welcomeBanner");
 var instructions = document.getElementById("instructions");
 var startButton = document.getElementById("startButton");
 var countdownClock = document.getElementById("countdownClock");
 
-// Variables for text of questions:
+// Variables for text of questions
 var questionArea = document.getElementById("questionArea");
 var questionText = document.getElementById("question-text");
 var optionList = document.getElementById("possible-answers");
@@ -43,8 +36,18 @@ var optionTwo = document.getElementById("li2");
 var optionThree = document.getElementById("li3");
 var optionFour = document.getElementById("li4");
 
+// Variables for the final page 
+var endPage = document.getElementById("endPage");
+var gameOverMessage = document.getElementById("gameOver");
+var initialsBox = document.getElementById("initialsBox");
+var userInitials = document.getElementById("initialsInput");
+
+// Global variables:
+var numberCorrect = 0; 
 var currentQuestionIndex = 0;
 var timeLeft=60; 
+var finalScore = "";
+var timerInterval = "";
 
 //comment
 function start() {
@@ -57,13 +60,16 @@ startButton.addEventListener("click", start);
 
 //comment
 function countdown() {
-    var timerInterval = setInterval( function(){
+    countdownClock.style.display = "block"
+    timerInterval = setInterval( function(){
+        
         timeLeft--;
-        countdownClock.textContent = timeLeft;
+        countdownClock.textContent = timeLeft + " seconds left";
 
         if(timeLeft === 0) {
-            clearInterval(timerInterval);
-            console.log("Your time is up!");
+            endGame();
+            // clearInterval(timerInterval);
+            
         }
     }, 1000);
 }
@@ -73,7 +79,7 @@ function quizQuestions() {
     //Clear original text  //Unhide questionArea div
     welcomePage.style.display = "none";
     questionArea.style.display = "block";
-
+    
     // Loads question text:  
     var currentQuestion = questions[0];
     questionText.textContent = currentQuestion.questionText;
@@ -86,8 +92,7 @@ function quizQuestions() {
     optionList.addEventListener("click", function(event){
         var userAnswer = event.target;  
         var currentQuestion = questions[currentQuestionIndex];
-        currentQuestionIndex++;
-
+        
         //comment
         if (userAnswer.textContent === currentQuestion.correctAnswer) {
             numberCorrect++;
@@ -95,6 +100,9 @@ function quizQuestions() {
             timeLeft = timeLeft -10;
         }
         
+        //
+        currentQuestionIndex++;
+
         // comment
         if (currentQuestionIndex < questions.length){ 
             currentQuestion = questions[currentQuestionIndex];
@@ -111,89 +119,26 @@ function quizQuestions() {
    })       
 } 
 
+//Calculates the score
+function calculateScore() {
+    finalScore = (numberCorrect * 25);
+    // store this somewhere else
+    console.log("Your final score is " + finalScore);
+}
+
+
+// Comment here
 function endGame() {
-    console.log("The game has ended.");
-    
+    calculateScore();
+    clearInterval(timerInterval);
+    //clearscreen
+    questionArea.style.display = "none";
+    endPage.style.display = "block";
+    gameOverMessage.textContent = "Your final score is " + finalScore + "!"; 
+
+
+        
 
 
 }
 
-// function secondQuestion() {
-//     var currentQuestion = questions[1];
-//     questionText.textContent = currentQuestion.questionText;
-//     optionOne.textContent = currentQuestion.options[0];
-//     optionTwo.textContent = currentQuestion.options[1];
-//     optionThree.textContent = currentQuestion.options[2];
-//     optionFour.textContent = currentQuestion.options[3];
-
-//      //Event listener for click on answers:
-//      optionList.addEventListener("click", function(event){
-//         var userAnswer = event.target;  
-//         if (userAnswer === optionOne) {
-//         numberCorrect++;
-//         thirdQuestion();
-//         } 
-//         else {
-//         timeLeft -10;
-//         thirdQuestion();
-//         }
-//         console.log(numberCorrect);
-//    })
-     
-// }
-
-// function thirdQuestion() {
-//     var currentQuestion = questions[2];
-//     questionText.textContent = currentQuestion.questionText;
-//     optionOne.textContent = currentQuestion.options[0];
-//     optionTwo.textContent = currentQuestion.options[1];
-//     optionThree.textContent = currentQuestion.options[2];
-//     optionFour.textContent = currentQuestion.options[3];
-
-//      //Event listener for click on answers:
-//      optionList.addEventListener("click", function(event){
-//         var userAnswer = event.target;  
-//         if (userAnswer === optionThree) {
-//         numberCorrect++;
-//         fourthQuestion();  
-//         } 
-//         else {
-//         timeLeft -10;
-//         fourthQuestion();
-//         }
-//         console.log(numberCorrect);
-//    })
-        
-// }
- 
-// function fourthQuestion() {
-//     var currentQuestion = questions[3];
-//     questionText.textContent = currentQuestion.questionText;
-//     optionOne.textContent = currentQuestion.options[0];
-//     optionTwo.textContent = currentQuestion.options[1];
-//     optionThree.textContent = currentQuestion.options[2];
-//     optionFour.textContent = currentQuestion.options[3];
-
-//      //Event listener for click on answers:
-//      optionList.addEventListener("click", function(event){
-//         var userAnswer = event.target;  
-//         if (userAnswer === optionFour) {
-//         numberCorrect++;
-//         endGame(); 
-//         } 
-//         else {
-//         timeLeft -10;
-//         endGame();
-//         }
-//         console.log(numberCorrect);
-//    })
-      
-// }
-
-
-    
-
-
-    
-
-    
