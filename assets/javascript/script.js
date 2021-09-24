@@ -9,14 +9,14 @@ var questions = [
     correctAnswer: "while loop"
     },
 
-    {questionText:"Which of the following is the correct way to create a function in JavaScript?", 
-    options: ["function functionName{}", "function functionName()", "function = functionName()", "function:function name"],
-    correctAnswer: "function = functionName()"
+    {questionText:"Which of the following do you need at the end of every statement in JavaScript?", 
+    options: ["a semitrailer", "an angle bracket", "a semicolon", "a nap"],
+    correctAnswer: "a semicolon"
     },
 
-    {questionText:"Which of the following is the correct way to start a \"for loop\"?", 
-    options: ["for i + 0; i > 5; i++", "for {i + 0; i > 5; i++}", "for ()", "for (i + 0; i > 5; i++)"],
-    correctAnswer: "for (i + 0; i > 5; i++)"
+    {questionText:"Which of the following is NOT a primitive data type?", 
+    options: ["boolean", "number", "string", "function"],
+    correctAnswer: "function"
     }
 ];
 
@@ -41,6 +41,7 @@ var endPage = document.getElementById("endPage");
 var gameOverMessage = document.getElementById("gameOver");
 var initialsBox = document.getElementById("initialsBox");
 var userInitials = document.getElementById("initialsInput");
+var submitInitialsButton = document.getElementById("")
 
 // Global variables:
 var numberCorrect = 0; 
@@ -99,7 +100,7 @@ function quizQuestions() {
         } else {
             timeLeft = timeLeft -10;
         }
-        
+
         //
         currentQuestionIndex++;
 
@@ -116,6 +117,7 @@ function quizQuestions() {
         }   
         
         console.log(numberCorrect);
+        
    })       
 } 
 
@@ -135,6 +137,12 @@ function endGame() {
     questionArea.style.display = "none";
     endPage.style.display = "block";
     gameOverMessage.textContent = "Your final score is " + finalScore + "!"; 
+
+    //Listens for a click on the button to save user game data
+    submitInitialsButton.addEventListener("click", function(e){
+        console.log(userInitials);
+    })
+
 
 
         
