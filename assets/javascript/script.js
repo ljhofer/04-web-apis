@@ -1,3 +1,4 @@
+// Variable that stores the quiz question content
 var questions = [
     {questionText:"Which type of HTML tag do we use to connect a JavaScript file to our HTML?",
     options: ["header", "div", "script", "link"], 
@@ -20,10 +21,8 @@ var questions = [
     }
 ];
 
-//Variables for starting page text, button, and countdown
+// Variables for starting button and text of questions
 var startButton = document.getElementById("startButton");
-
-// Variables for text of questions
 var questionArea = document.getElementById("questionArea");
 var questionText = document.getElementById("question-text");
 var optionList = document.getElementById("possible-answers");
@@ -35,7 +34,6 @@ var optionFour = document.getElementById("li4");
 // Variables for the final page 
 var endPage = document.getElementById("endPage");
 var gameOverMessage = document.getElementById("gameOver");
-var initialsBox = document.getElementById("initialsBox");
 var userInitials = document.getElementById("initialsInput");
 var submitInitialsButton = document.getElementById("enter");
 
@@ -45,20 +43,19 @@ var currentQuestionIndex = 0;
 var timeLeft=60; 
 var finalScore = "";
 var timerInterval = "";
-var currentUserInitials = "";
 var timeAtEnd = "";
-var highScore = "";
+// var highScore = "";
 
-//comment
+// Starts the game
 function start() {
     countdown();
     quizQuestions();    
 }
 
-//Sets up click event listener for the start button
+// Sets up click event listener for the start button
 startButton.addEventListener("click", start);
 
-//comment
+// Starts countdown clock and defines its behavior
 function countdown() {
     var countdownClock = document.getElementById("countdownClock");
     countdownClock.style.display = "block"
@@ -69,14 +66,13 @@ function countdown() {
 
         if(timeLeft === 0) {
             endGame();
-            // clearInterval(timerInterval);
         }
     }, 1000);
 }
 
-// load quiz questions on click of button
+// Loads quiz questions on click of button
 function quizQuestions() {
-    //Clear original text  //Unhide questionArea div
+    // Clears original text and makes question text area visible
     var welcomePage = document.getElementById("welcomePage");
     welcomePage.style.display = "none";
     questionArea.style.display = "block";
@@ -104,7 +100,7 @@ function quizQuestions() {
         //Changes to the next question
         currentQuestionIndex++;
 
-        // Changes text to the next question and loads final page if all questions have been answered
+        //Changes text to the next question and loads final page if all questions have been answered
         if (currentQuestionIndex < questions.length){ 
             currentQuestion = questions[currentQuestionIndex];
             questionText.textContent = currentQuestion.questionText;
@@ -115,28 +111,23 @@ function quizQuestions() {
         } else {
             endGame();
         }   
-        
-        console.log(numberCorrect);
-        
    })       
 } 
 
 //Calculates the score and add it to local storage if it is the high score
 function calculateScore() {
     finalScore = (numberCorrect * 25 + timeLeft);
-    console.log(finalScore);
 }
 
+//Checks to see if there is a high score in local storage and if this user's score is higher. If so, it saves this user's score and initials.
 function checkHighScore() {
     if (localStorage.getItem("currentHighScore") < finalScore || localStorage.getItem("currentHighScore" == null)) {
         currentHighScore = finalScore;
         localStorage.setItem("currentHighScore", currentHighScore);
         
-        currentUserInitials = userInitials.value;
+        var currentUserInitials = userInitials.value;
         localStorage.setItem("userInitials", currentUserInitials);
     }
-
-
 } 
 
 // Loads the text for the final page, calculates and displays final score

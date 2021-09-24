@@ -1,9 +1,8 @@
-/* Style for high score page */
 
+/* Style for high score page */
 body {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
 h2 {
@@ -16,7 +15,7 @@ h2 {
     text-decoration: none;
     padding: 10px;
     color: white;
-    background-color: crimson;
+    background-color: darkred;
     margin-top: 100px;
 }
 
