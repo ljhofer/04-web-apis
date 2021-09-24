@@ -1,0 +1,22 @@
+/* Style for high score page */
+
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+h2 {
+    margin-bottom: 35px;    
+}
+
+#play-again {
+    font-size: large;
+    border: 2px solid black;
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+    background-color: crimson;
+    margin-top: 100px;
+}
+

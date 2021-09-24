@@ -21,11 +21,7 @@ var questions = [
 ];
 
 //Variables for starting page text, button, and countdown
-var welcomePage = document.getElementById("welcomePage");
-var welcomeBanner = document.getElementById("welcomeBanner");
-var instructions = document.getElementById("instructions");
 var startButton = document.getElementById("startButton");
-var countdownClock = document.getElementById("countdownClock");
 
 // Variables for text of questions
 var questionArea = document.getElementById("questionArea");
@@ -64,6 +60,7 @@ startButton.addEventListener("click", start);
 
 //comment
 function countdown() {
+    var countdownClock = document.getElementById("countdownClock");
     countdownClock.style.display = "block"
     timerInterval = setInterval( function(){
         
@@ -73,7 +70,6 @@ function countdown() {
         if(timeLeft === 0) {
             endGame();
             // clearInterval(timerInterval);
-            
         }
     }, 1000);
 }
@@ -81,6 +77,7 @@ function countdown() {
 // load quiz questions on click of button
 function quizQuestions() {
     //Clear original text  //Unhide questionArea div
+    var welcomePage = document.getElementById("welcomePage");
     welcomePage.style.display = "none";
     questionArea.style.display = "block";
     

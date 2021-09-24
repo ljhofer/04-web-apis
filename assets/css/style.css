@@ -30,8 +30,9 @@ button {
 /* Styling for See High Score link */
 #see-high-score {
     font-size: x-large; 
+    margin-top: 100px;
     text-align: left;
-    color: brown;
+    color: crimson;
 }
 
 /* Styling for countdown clock */
@@ -39,7 +40,7 @@ button {
     display: none;
     font-size: x-large; 
     text-align: right;
-    color: brown;
+    color: crimson;
 }
 
 /* Styling for quiz questions pages */
@@ -56,8 +57,6 @@ h3 {
 ul {
     list-style-type: none;
     font-size: xx-large;
-    
-    /* text-align: center; */
 }
 
 li {
@@ -68,10 +67,28 @@ li {
     padding: 15px;
 }
 
-/* li.hover */
+li.hover {
+    background-color: brown;
+    color: crimson;
+}
 
 /* Styling for end of game page */
 #endPage {
     display: none;
+    font-size: x-large;
 }
 
+h4 {
+    font-size: xx-large;
+}
+
+#initialsInput {
+    height: 30px;
+    width: 200px;
+}
+
+#enter {
+    background-color: crimson;
+    outline: 2px solid black;
+    margin-top: 25px;
+}
