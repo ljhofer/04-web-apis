@@ -41,7 +41,7 @@ var endPage = document.getElementById("endPage");
 var gameOverMessage = document.getElementById("gameOver");
 var initialsBox = document.getElementById("initialsBox");
 var userInitials = document.getElementById("initialsInput");
-var submitInitialsButton = document.getElementById("")
+var submitInitialsButton = document.getElementById("enter");
 
 // Global variables:
 var numberCorrect = 0; 
@@ -49,6 +49,9 @@ var currentQuestionIndex = 0;
 var timeLeft=60; 
 var finalScore = "";
 var timerInterval = "";
+var currentUserInitials = "";
+var timeAtEnd = "";
+var highScore = "";
 
 //comment
 function start() {
@@ -89,22 +92,22 @@ function quizQuestions() {
     optionThree.textContent = currentQuestion.options[2];
     optionFour.textContent = currentQuestion.options[3];
     
-    //Event listener for click on answers:
+    //Event listener for click on answers
     optionList.addEventListener("click", function(event){
         var userAnswer = event.target;  
         var currentQuestion = questions[currentQuestionIndex];
         
-        //comment
+        //Checks to see if the user answer matches the correct answer
         if (userAnswer.textContent === currentQuestion.correctAnswer) {
             numberCorrect++;
         } else {
             timeLeft = timeLeft -10;
         }
 
-        //
+        //Changes to the next question
         currentQuestionIndex++;
 
-        // comment
+        // Changes text to the next question and loads final page if all questions have been answered
         if (currentQuestionIndex < questions.length){ 
             currentQuestion = questions[currentQuestionIndex];
             questionText.textContent = currentQuestion.questionText;
@@ -121,32 +124,39 @@ function quizQuestions() {
    })       
 } 
 
-//Calculates the score
+//Calculates the score and add it to local storage if it is the high score
 function calculateScore() {
-    finalScore = (numberCorrect * 25);
-    // store this somewhere else
-    console.log("Your final score is " + finalScore);
+    finalScore = (numberCorrect * 25 + timeLeft);
+    console.log(finalScore);
 }
 
+function checkHighScore() {
+    if (localStorage.getItem("currentHighScore") < finalScore || localStorage.getItem("currentHighScore" == null)) {
+        currentHighScore = finalScore;
+        localStorage.setItem("currentHighScore", currentHighScore);
+        
+        currentUserInitials = userInitials.value;
+        localStorage.setItem("userInitials", currentUserInitials);
+    }
 
-// Comment here
+
+} 
+
+// Loads the text for the final page, calculates and displays final score
 function endGame() {
     calculateScore();
     clearInterval(timerInterval);
-    //clearscreen
     questionArea.style.display = "none";
     endPage.style.display = "block";
     gameOverMessage.textContent = "Your final score is " + finalScore + "!"; 
 
+    
     //Listens for a click on the button to save user game data
-    submitInitialsButton.addEventListener("click", function(e){
-        console.log(userInitials);
-    })
-
-
-
+    submitInitialsButton.addEventListener("click", function(e) {
+        e.preventDefault();
+        checkHighScore();
+        window.open("./highscore.html", "_self");
+    });
         
-
-
 }
 
