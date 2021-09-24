@@ -27,13 +27,19 @@ button {
     font-size: x-large;
 }
 
-/* Styling for countdown clock */
-h2 {
-   display: none;
-   font-size: lx-large; 
-   text-align: right;
-   color:red;
+/* Styling for See High Score link */
+#see-high-score {
+    font-size: x-large; 
+    text-align: left;
+    color: brown;
+}
 
+/* Styling for countdown clock */
+#countdownClock {
+    display: none;
+    font-size: x-large; 
+    text-align: right;
+    color: brown;
 }
 
 /* Styling for quiz questions pages */

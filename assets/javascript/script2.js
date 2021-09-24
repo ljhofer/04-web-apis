@@ -22,10 +22,3 @@ playAgain.addEventListener("click", function(e) {
 })
 
 
-
-
-
-
-
-
-// call function??
